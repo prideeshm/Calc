@@ -28,111 +28,146 @@ Publish the website in the given URL.
 ```
 calc.html
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <center>
-     <h1>SIMPLE CALCULATOR</h1>
-     <h1>PRIDEESH M(23007215)</h1>
-    </center>
-    <style type="text/css">
-        *{
-            margin: 0;
-            padding: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            box-sizing: border-box;
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <center>
+            <h1>SIMPLE CALCULATOR</h1>
+            <h1>PRIDEESH M(23007215)</h1>
+           </center>
+        <title>Calculator</title>
+        
+        <script>
+        function calculate(args)
+        {
+            res = document.getElementById("result");
+            expression = res.innerText;
+            cmd = args.srcElement.innerText;
+            if(cmd == "=")
+            {
+                expression = "" + eval(expression)
+            }
+            else if(cmd == "C")
+            {
+                expression=""
+            }
+            else if(cmd == "DEL")
+            {
+                expression = expression.slice(0, -1);
+
+            }
+            else if(cmd == "√")
+            {
+                expression = "" + Math.sqrt(eval(expression));
+            }
+            else if(cmd == "%")
+            {
+                expression = expression % 1;
+            }
+            else if(cmd == "log")
+             {
+        expression = Math.log10(expression);
+           }
+       
+            else{
+                expression = expression + cmd;
+            }
+            res.innerText = expression;
+            
+
         }
-        .container {
-            width: 100%;
-            height: 100vh;
-            background: white(249, 249, 249);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .calculator {
-            background: #e0e86d;
-            padding: 20px;
-            border-radius: 10px;
-        }
-        .calculator form input {
-            border: 0;
-            outline: 0;
-            width: 60px;
-            height: 60px;
-            border-radius: 10px;
-            box-shadow: -8px -8px 15px rgba(109, 13, 72, 0.1),  5px 5px 15px rgba(118, 17, 144, 0.2);
-            background: transparent;
-            font-size: 20px;
-            color: rgb(55, 102, 221);
-            cursor: pointer;
-            margin: 10px;
-        }
-        form .enter {
-            display: flex;
-            justify-content: flex-end;
-            margin: 20px 0;
-        }
-        form .enter input {
-            text-align: right;
-            flex: 1;
-            font-size: 45px;
-            box-shadow: none;
-            border: 1px solid rgb(23, 28, 108);
-            padding: 20px;
-        }
-        form input.equal {
-            width: 145px;
-        }
-        form input.color {
-            color: rgb(159, 115, 209);
-        }
-    </style>
-</head>
+         
+        </script>
+
+        <style>
+          
+            .calculator-container {
+                width: 400px;
+                background-color:rgb(141, 176, 23);
+                margin: 0 auto; 
+                margin-top: 90px;
+                text-align: center;
+                
+            }
+
+           
+            button {
+                width: 50px;
+                height: 50px;
+                margin: 10px; 
+                font-size: 20px; 
+                
+                background-color: black; 
+                color: white; 
+                border: none;
+            }
+
+          
+            #result {
+                
+       background-color:#79efe1;
+    text-align: right;
+    padding-right: 50px;
+    font-size: 20px;
+    margin-bottom: 20px; 
+    border: solid rgb(213, 98, 98) 0.5px;
+    color: rgb(73, 56, 165);
+    width: 348px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+            }
+            h1 {
+                padding-top: 10px;
+                color:white;
+                font-size: 50px;
+            }
+            .redd {
+                background-color: rgb(221, 88, 88);
+            }
+            .bluee {
+                
+                background-color: rgb(94, 214, 244);
+            }
+            body {
+                background-color: rgb(207, 58, 167);
+            }
+        </style>
+
+    </head>
 <body>
-    <div class="container">  
-        <div class="calculator">
-            <form>
-                <div class="enter">
-                    <input type="text" name="display">
-                </div>
-                <div>
-                    <input type="button" onclick="display.value=''" value="AC" class="color">
-                    <input type="button" onclick="display.value=display.value.toString().slice(0,-1)" value="Del" class="color">
-                    <input type="button" onclick="display.value+='%'" value="%" class="color">
-                    <input type="button" onclick="display.value+='/'" value="/" class="color">
-                </div>
-                <div>
-                    <input type="button" onclick="display.value+='7'" value="7">
-                    <input type="button" onclick="display.value+='8'" value="8">
-                    <input type="button" onclick="display.value+='9'" value="9">
-                    <input type="button" onclick="display.value+='*'" value="*" class="color">
-                </div>
-                <div>
-                    <input type="button" onclick="display.value+='4'" value="4">
-                    <input type="button" onclick="display.value+='5'" value="5">
-                    <input type="button" onclick="display.value+='6'" value="6">
-                    <input type="button" onclick="display.value+='-'" value="-" class="color">
-                </div>
-                <div>
-                    <input type="button" onclick="display.value+='1'" value="1">
-                    <input type="button" onclick="display.value+='2'" value="2">
-                    <input type="button" onclick="display.value+='3'" value="3">
-                    <input type="button" onclick="display.value+='+'" value="+" class="color">
-                </div>
-                <div>
-                    <input type="button" onclick="display.value+='0'" value="0">
-                    <input type="button" onclick="display.value+='.'" value="." class="color">
-                    <input type="button" onclick="display.value=eval(display.value)" value="=" class="equal color">
-                </div>
-            </form>
-        </div>
+    <div class="calculator-container">
+        <h1>CALCULATOR</h1>
+        <div id="result">0</div>
+        <button onclick="calculate(event);">7</button>
+        <button onclick="calculate(event);">8</button>
+        <button onclick="calculate(event);">9</button>
+        <button class="bluee"  onclick="calculate(event);">/</button>
+        <button class="bluee"  onclick="calculate(event);"> DEL </button><br>
+        <button onclick="calculate(event);">4</button>
+        <button onclick="calculate(event);">5</button>
+        <button onclick="calculate(event);">6</button>
+        <button class="bluee"  onclick="calculate(event);">*</button>
+        <button class="bluee"  onclick="calculate(event);">&radic;</button> </button><br>
+        <button onclick="calculate(event);">1</button>
+        <button onclick="calculate(event);">2</button>
+        <button onclick="calculate(event);">3</button>
+        <button class="bluee"  onclick="calculate(event);">-</button>
+        <button class="bluee"  onclick="calculate(event);">log</button><br>
+        <button onclick="calculate(event);">0</button>
+        <button onclick="calculate(event);">.</button>
+        <button class="redd" onclick="calculate(event);">C</button>
+        <button class="bluee"  onclick="calculate(event);">+</button>
+        <button class="bluee" onclick="calculate(event);">=</button><br>
     </div>
-</body>
-</html>
+    </body>
+</html
 
 ```
 ## OUTPUT:
-![Alt text](<Screenshot (26).png>)
+![Alt text](<Screenshot (32).png>)
+![Alt text](<Screenshot (33).png>)
 ## RESULT:
 The program for designing a standard calculator using HTML and CSS is executed successfully.
